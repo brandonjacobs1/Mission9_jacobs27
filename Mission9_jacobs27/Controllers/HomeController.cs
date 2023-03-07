@@ -19,7 +19,7 @@ namespace Mission9_jacobs27.Controllers
         {
             _repo = repo;
         }
-        public IActionResult Index(int pageNum = 1)
+        public IActionResult Index(string category, int pageNum = 1)
         {
             int pageSize = 10;
 
@@ -27,6 +27,7 @@ namespace Mission9_jacobs27.Controllers
             {
                 Books = _repo.Books
                 .OrderBy(p => p.Title)
+                .Where(x => x.Category == category || category == null)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 

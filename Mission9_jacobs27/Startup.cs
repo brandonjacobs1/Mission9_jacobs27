@@ -57,6 +57,11 @@ namespace Mission9_jacobs27
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("catpage", "{category}/{pageNum}", new { Controller = "Home", Action = "Index" });
+                
+                endpoints.MapControllerRoute("Pages", "{pageNum}", new { Controller = "Home", Action = "Index" });
+                endpoints.MapControllerRoute("cat", "{category}", new { Controller = "Home", Action = "Index", pageNum = 1 });
+               
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
