@@ -2,7 +2,7 @@
     ViewData["Title"] = "Books";
 }
 @model BooksViewModel
-
+@*Displays main page using partial view*@
 @foreach (Book book in Model.Books)
 {
     <partial name="BookDescription" model="book"/>

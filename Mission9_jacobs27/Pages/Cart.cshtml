@@ -4,24 +4,27 @@
 }
 
 <h2> Your Cart</h2>
-
+@*Show cart items*@ 
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>Book</th>
+            @*Added sorting by title using CSS*@
+            <th data-field="name" data-sortable="true">Book</th>
             <th>Quantity</th>
             <th>Price</th>
             <th>Subtotal</th>
         </tr>
     </thead>
     <tbody>
-        @foreach(var item in Model.cart.Items)
-            {
-                <tr>@item.Book.Title</tr>
-                <tr>@item.Quantity</tr>
-                <tr>@item.Book.Price.ToString("c")</tr>
-                <tr>@(item.Quantity * item.Book.Price)</tr>
-            }
+        @foreach (var item in Model.cart.Items)
+        {
+            <tr>
+                <td data-field="name">@item.Book.Title</td>
+                <td>@item.Quantity</td>
+                <td>@item.Book.Price.ToString("c")</td>
+                <td>@(item.Quantity * item.Book.Price)</td>
+            </tr>
+        }
     </tbody>
     <tfoot>
         <tr>
@@ -30,3 +33,6 @@
         </tr>
     </tfoot>
 </table>
+<div>
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
+</div>

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 
 namespace Mission9_jacobs27.Controllers
-{
+{// Using repository model
     public class HomeController : Controller
     {
         private IBookstoreRepository _repo;

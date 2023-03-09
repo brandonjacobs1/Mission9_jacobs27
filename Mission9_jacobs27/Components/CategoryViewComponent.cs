@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+//View compent for category selector
 namespace Mission9_jacobs27.Components
 {
     public class CategoryViewComponent : ViewComponent

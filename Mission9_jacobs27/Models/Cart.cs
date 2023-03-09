@@ -8,7 +8,7 @@ namespace Mission9_jacobs27.Models
     public class Cart
     {
         public List<CartLineItem> Items { get; set; } = new List<CartLineItem>();
-
+        //Add new item
         public void AddItem(Book book, int quantity)
         {
             CartLineItem line = Items
