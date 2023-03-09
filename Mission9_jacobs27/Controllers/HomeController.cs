@@ -26,14 +26,14 @@ namespace Mission9_jacobs27.Controllers
             var x = new BooksViewModel
             {
                 Books = _repo.Books
+                .Where(c => c.Category == category || category == null)
                 .OrderBy(p => p.Title)
-                .Where(x => x.Category == category || category == null)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
                 PageInfo = new PageInfo
                 {
-                    Total = _repo.Books.Count(),
+                    Total = category == null ? _repo.Books.Count() : _repo.Books.Where(p => p.Category == category).Count(),
                     PageSize = pageSize,
                     CurrentPage = pageNum
                 }

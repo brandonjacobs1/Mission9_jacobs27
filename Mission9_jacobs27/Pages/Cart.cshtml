@@ -1,0 +1,32 @@
+﻿@page
+@model Mission9_jacobs27.Pages.CartModel
+@{
+}
+
+<h2> Your Cart</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Book</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.cart.Items)
+            {
+                <tr>@item.Book.Title</tr>
+                <tr>@item.Quantity</tr>
+                <tr>@item.Book.Price.ToString("c")</tr>
+                <tr>@(item.Quantity * item.Book.Price)</tr>
+            }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">Total</td>
+            <td>@Model.cart.CalculateTotal().ToString("c")</td>
+        </tr>
+    </tfoot>
+</table>

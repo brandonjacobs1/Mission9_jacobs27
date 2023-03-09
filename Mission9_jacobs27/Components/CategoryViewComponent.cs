@@ -21,6 +21,7 @@ namespace Mission9_jacobs27.Components
 
             var Categories = _repo.Books
                 .Select(x => x.Category)
+                .Distinct()
                 .OrderBy(x => x);
 
             return View(Categories);
