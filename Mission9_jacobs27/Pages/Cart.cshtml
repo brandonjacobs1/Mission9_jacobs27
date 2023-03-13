@@ -22,7 +22,15 @@
                 <td data-field="name">@item.Book.Title</td>
                 <td>@item.Quantity</td>
                 <td>@item.Book.Price.ToString("c")</td>
-                <td>@(item.Quantity * item.Book.Price)</td>
+                <td>@((item.Quantity * item.Book.Price).ToString("c"))</td>
+
+                <td class="text-center">
+                    <form method="post" asp-page-handler="Remove">
+                        <input type="hidden" name="bookID" value="@item.Book.BookId" />
+                        <input type="hidden" name="returnURL" value="@Model.ReturnUrl" />
+                        <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>

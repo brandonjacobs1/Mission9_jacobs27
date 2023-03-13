@@ -9,7 +9,7 @@ namespace Mission9_jacobs27.Models
     {
         public List<CartLineItem> Items { get; set; } = new List<CartLineItem>();
         //Add new item
-        public void AddItem(Book book, int quantity)
+        public virtual void AddItem(Book book, int quantity)
         {
             CartLineItem line = Items
                 .Where(x => x.Book.BookId == book.BookId)
@@ -27,6 +27,14 @@ namespace Mission9_jacobs27.Models
             {
                 line.Quantity += quantity;
             }
+        }
+        public virtual void RemoveItem(Book book)
+        {
+            Items.RemoveAll(x => x.Book.BookId == book.BookId);
+        }
+        public virtual void EmptyCart()
+        {
+            Items.Clear();
         }
         public double CalculateTotal()
         {
