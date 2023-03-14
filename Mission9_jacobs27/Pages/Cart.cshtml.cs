@@ -27,7 +27,7 @@ namespace Mission9_jacobs27.Pages
         public IActionResult OnPost(int BookId, string returnUrl)
         {
             Book book = _repo.Books.FirstOrDefault(x => x.BookId == BookId);
-            cart = HttpContext.Session.GetJson<Cart>("Cart") ?? new Cart();
+
             cart.AddItem(book, 1);
 
             return RedirectToPage(new { ReturnUrl = returnUrl });

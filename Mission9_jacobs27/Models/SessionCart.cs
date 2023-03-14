@@ -14,7 +14,7 @@ namespace Mission9_jacobs27.Models
         public static Cart GetCart(IServiceProvider services)
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
-            SessionCart cart = session?.GetJson<SessionCart>("Cart") ?? new SessionCart();
+            SessionCart cart = session?.GetJson<SessionCart>("cart") ?? new SessionCart();
             cart.Session = session;
 
             return cart;
@@ -26,17 +26,17 @@ namespace Mission9_jacobs27.Models
         public override void AddItem(Book book, int quantity)
         {
             base.AddItem(book, quantity);
-            Session.SetJson("Cart", this);
+            Session.SetJson("cart", this);
         }
         public override void RemoveItem(Book book)
         {
             base.RemoveItem(book);
-            Session.SetJson("Cart", this);
+            Session.SetJson("cart", this);
         }
         public override void EmptyCart()
         {
             base.EmptyCart();
-            Session.SetJson("Cart", this);
+            Session.Remove("cart");
         }
     }
 }
